@@ -1,0 +1,31 @@
+package main
+
+import "fmt"
+
+func binarySearch(nums []int, target int) int {
+	left, right := 0, len(nums)-1
+
+	for left <= right {
+		mid := left + (right-left)/2
+
+		if nums[mid] == target {
+			return mid
+		}
+
+		if nums[mid] < target {
+			left = mid + 1
+		} else {
+			right = mid - 1
+		}
+	}
+
+	return -1
+}
+
+func main() {
+	nums := []int{10, 20, 30, 40, 50, 60, 70, 80}
+	target := 60
+
+	index := binarySearch(nums, target)
+	fmt.Println("Target index:", index)
+}
